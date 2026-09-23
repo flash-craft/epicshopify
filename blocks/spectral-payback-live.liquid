@@ -1,0 +1,507 @@
+{% comment %}
+  Spectral Payback — live storefront layer.
+  Reads verified challenge progress from the public Payback Challenge metaobject
+  and only renders private order/customer fields when the signed-in customer ID
+  matches the challenge owner.
+{% endcomment %}
+
+{% assign payback_id = block.id | replace: '_', '' | downcase %}
+{% assign current_customer_gid = '' %}
+{% if customer %}
+  {% assign current_customer_gid = 'gid://shopify/Customer/' | append: customer.id %}
+{% endif %}
+
+{% assign owned_challenge_count = 0 %}
+{% assign owned_challenge = blank %}
+
+{% for challenge in metaobjects.sidekick_payback_challenge.values %}
+  {% if customer and challenge.customer_id.value == current_customer_gid %}
+    {% assign owned_challenge_count = owned_challenge_count | plus: 1 %}
+    {% if owned_challenge == blank and challenge.status.value == 'ACTIVE' %}
+      {% assign owned_challenge = challenge %}
+    {% endif %}
+  {% endif %}
+{% endfor %}
+
+{% style %}
+  .spectral-payback-{{ payback_id }} {
+    --sp-bg: {{ block.settings.surface_color }};
+    --sp-card: {{ block.settings.card_color }};
+    --sp-text: {{ block.settings.text_color }};
+    --sp-muted: {{ block.settings.muted_color }};
+    --sp-accent: {{ block.settings.accent_color }};
+    --sp-border: {{ block.settings.border_color }};
+    --sp-track: {{ block.settings.track_color }};
+    width: 100%;
+    background: var(--sp-bg);
+    color: var(--sp-text);
+    padding: clamp(28px, 6vw, 80px) 18px;
+    box-sizing: border-box;
+    font-family: {{ block.settings.body_font.family }};
+  }
+  .spectral-payback-{{ payback_id }} * { box-sizing: border-box; }
+  .spectral-payback-{{ payback_id }}__inner { max-width: 880px; margin: 0 auto; }
+  .spectral-payback-{{ payback_id }}__eyebrow {
+    margin: 0 0 16px;
+    color: var(--sp-accent);
+    font: 700 11px/1.2 monospace;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+  }
+  .spectral-payback-{{ payback_id }} h1 {
+    margin: 0;
+    max-width: 760px;
+    color: var(--sp-text);
+    font-family: {{ block.settings.heading_font.family }};
+    font-size: clamp(42px, 10vw, 92px);
+    line-height: .9;
+    letter-spacing: -.055em;
+    text-transform: uppercase;
+  }
+  .spectral-payback-{{ payback_id }}__lead {
+    max-width: 640px;
+    margin: 22px 0 0;
+    color: var(--sp-muted);
+    font-size: clamp(15px, 2vw, 18px);
+    line-height: 1.55;
+  }
+  .spectral-payback-{{ payback_id }}__card {
+    margin-top: 34px;
+    padding: clamp(18px, 4vw, 30px);
+    background: var(--sp-card);
+    border: 1px solid var(--sp-border);
+  }
+  .spectral-payback-{{ payback_id }}__product {
+    display: grid;
+    grid-template-columns: 92px minmax(0,1fr);
+    gap: 16px;
+    align-items: center;
+  }
+  .spectral-payback-{{ payback_id }}__image {
+    width: 92px;
+    height: 92px;
+    object-fit: cover;
+    background: var(--sp-bg);
+  }
+  .spectral-payback-{{ payback_id }}__product h2 {
+    margin: 0 0 7px;
+    font-family: {{ block.settings.heading_font.family }};
+    font-size: clamp(18px, 3vw, 26px);
+    line-height: 1.05;
+  }
+  .spectral-payback-{{ payback_id }}__muted {
+    color: var(--sp-muted);
+    font-size: 14px;
+  }
+  .spectral-payback-{{ payback_id }}__progress {
+    margin-top: 28px;
+  }
+  .spectral-payback-{{ payback_id }}__progress-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    align-items: baseline;
+    margin-bottom: 10px;
+    font: 700 13px/1.2 monospace;
+    letter-spacing: .06em;
+  }
+  .spectral-payback-{{ payback_id }}__segments {
+    display: grid;
+    grid-template-columns: repeat(var(--sp-required), minmax(0,1fr));
+    gap: 5px;
+  }
+  .spectral-payback-{{ payback_id }}__segment {
+    height: 10px;
+    background: var(--sp-track);
+    transition: background .3s ease, transform .3s ease;
+  }
+  .spectral-payback-{{ payback_id }}__segment--filled { background: var(--sp-accent); }
+  .spectral-payback-{{ payback_id }}__remaining {
+    margin: 13px 0 0;
+    color: var(--sp-muted);
+    font-size: 14px;
+  }
+  .spectral-payback-{{ payback_id }}__reward {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    align-items: center;
+    margin-top: 22px;
+    padding-top: 20px;
+    border-top: 1px solid var(--sp-border);
+  }
+  .spectral-payback-{{ payback_id }}__reward strong {
+    color: var(--sp-accent);
+    font-size: clamp(24px, 5vw, 34px);
+    line-height: 1;
+  }
+  .spectral-payback-{{ payback_id }}__share {
+    display: grid;
+    gap: 10px;
+    margin-top: 18px;
+  }
+  .spectral-payback-{{ payback_id }}__code {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+    padding: 12px;
+    background: var(--sp-bg);
+    border: 1px solid var(--sp-border);
+    font: 700 14px/1.2 monospace;
+  }
+  .spectral-payback-{{ payback_id }}__code span {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .spectral-payback-{{ payback_id }}__actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0,1fr));
+    gap: 8px;
+  }
+  .spectral-payback-{{ payback_id }} button,
+  .spectral-payback-{{ payback_id }} a.sp-button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 46px;
+    padding: 11px 12px;
+    border: 1px solid var(--sp-accent);
+    background: transparent;
+    color: var(--sp-text);
+    text-decoration: none;
+    cursor: pointer;
+    font: 700 12px/1.1 monospace;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+  }
+  .spectral-payback-{{ payback_id }} button:hover,
+  .spectral-payback-{{ payback_id }} button:focus-visible,
+  .spectral-payback-{{ payback_id }} a.sp-button:hover,
+  .spectral-payback-{{ payback_id }} a.sp-button:focus-visible {
+    background: var(--sp-accent);
+    color: var(--sp-bg);
+    outline: 2px solid var(--sp-accent);
+    outline-offset: 2px;
+  }
+  .spectral-payback-{{ payback_id }}__notice {
+    margin-top: 18px;
+    padding: 14px;
+    border-left: 3px solid var(--sp-accent);
+    background: var(--sp-bg);
+    color: var(--sp-muted);
+    font-size: 13px;
+    line-height: 1.55;
+  }
+  .spectral-payback-{{ payback_id }}__locked {
+    margin-top: 26px;
+    padding: 20px;
+    border: 1px solid var(--sp-border);
+    background: var(--sp-card);
+  }
+  .spectral-payback-{{ payback_id }}__locked h2 {
+    margin: 0 0 10px;
+    font-family: {{ block.settings.heading_font.family }};
+    text-transform: uppercase;
+  }
+  .spectral-payback-{{ payback_id }}__rules {
+    margin: 28px 0 0;
+    color: var(--sp-muted);
+    font-size: 12px;
+    line-height: 1.65;
+  }
+  @media (min-width: 700px) {
+    .spectral-payback-{{ payback_id }} { padding-left: 32px; padding-right: 32px; }
+    .spectral-payback-{{ payback_id }}__actions { grid-template-columns: repeat(4, minmax(0,1fr)); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .spectral-payback-{{ payback_id }}__segment { transition: none; }
+  }
+{% endstyle %}
+
+<section class="spectral-payback-{{ payback_id }}" {{ block.shopify_attributes }}>
+  <div class="spectral-payback-{{ payback_id }}__inner">
+
+    {% if customer and owned_challenge != blank %}
+      {% assign status = owned_challenge.status.value | upcase %}
+      {% assign required = owned_challenge.required_referrals.value | plus: 0 %}
+      {% assign valid = owned_challenge.valid_referrals.value | plus: 0 %}
+      {% assign remaining = required | minus: valid %}
+      {% assign reward = owned_challenge.reward_amount.value | plus: 0 %}
+      {% assign original_amount = owned_challenge.original_amount.value | plus: 0 %}
+      {% assign code = owned_challenge.referral_code.value %}
+      {% assign share_url = request.origin | append: '/payback?ref=' | append: code %}
+      {% assign reward_money = reward | money %}
+      {% assign original_money = original_amount | money %}
+
+      {% case status %}
+        {% when 'UNLOCKED' %}
+          <p class="spectral-payback-{{ payback_id }}__eyebrow">SPECTRAL PAYBACK // VERIFIED GOAL</p>
+          <h1>PAYBACK UNLOCKED.</h1>
+          <p class="spectral-payback-{{ payback_id }}__lead">Your qualifying challenge is complete. Your original qualifying purchase is now eligible for the configured refund after verification.</p>
+        {% when 'REFUNDED' %}
+          <p class="spectral-payback-{{ payback_id }}__eyebrow">SPECTRAL PAYBACK // COMPLETE</p>
+          <h1>PAYBACK REFUNDED.</h1>
+          <p class="spectral-payback-{{ payback_id }}__lead">This challenge has already been paid out.</p>
+        {% when 'PENDING_VERIFICATION' %}
+          <p class="spectral-payback-{{ payback_id }}__eyebrow">SPECTRAL PAYBACK // CHECKING</p>
+          <h1>VERIFYING YOUR RIDES.</h1>
+          <p class="spectral-payback-{{ payback_id }}__lead">Your referral goal has been reached, but the qualifying orders still need to be verified before the refund is issued.</p>
+        {% else %}
+          <p class="spectral-payback-{{ payback_id }}__eyebrow">DESIGN. BUILD. RIDE. REPEAT.</p>
+          <h1>GET YOUR ORDER BACK.</h1>
+          <p class="spectral-payback-{{ payback_id }}__lead">Share your personal link with other riders. When enough new customers make qualifying purchases, your original order unlocks the configured refund.</p>
+      {% endcase %}
+
+      <div class="spectral-payback-{{ payback_id }}__card">
+        <div class="spectral-payback-{{ payback_id }}__product">
+          {% if owned_challenge.product_image.value != blank %}
+            <img class="spectral-payback-{{ payback_id }}__image" src="{{ owned_challenge.product_image.value | escape }}" alt="{{ owned_challenge.product_title.value | escape }}" width="92" height="92">
+          {% endif %}
+          <div>
+            <h2>{{ owned_challenge.product_title.value }}</h2>
+            <div class="spectral-payback-{{ payback_id }}__muted">Original qualifying purchase · {{ original_money }}</div>
+          </div>
+        </div>
+
+        <div class="spectral-payback-{{ payback_id }}__progress" style="--sp-required: {{ required | at_least: 1 }}">
+          <div class="spectral-payback-{{ payback_id }}__progress-top">
+            <span>{{ valid }} / {{ required }} RIDERS</span>
+            <span>{% if owned_challenge.expires_at.value != blank %}EXPIRES {{ owned_challenge.expires_at.value | date: "%b %d, %Y" | upcase }}{% endif %}</span>
+          </div>
+          <div class="spectral-payback-{{ payback_id }}__segments" role="progressbar" aria-valuemin="0" aria-valuemax="{{ required }}" aria-valuenow="{{ valid }}">
+            {% for i in (1..20) %}
+              {% if i <= required %}
+                <span class="spectral-payback-{{ payback_id }}__segment{% if i <= valid %} spectral-payback-{{ payback_id }}__segment--filled{% endif %}"></span>
+              {% endif %}
+            {% endfor %}
+          </div>
+          <p class="spectral-payback-{{ payback_id }}__remaining">
+            {% if remaining > 0 %}
+              {{ remaining }} qualifying purchase{% if remaining != 1 %}s{% endif %} remaining.
+            {% else %}
+              All qualifying purchases reached.
+            {% endif %}
+          </p>
+        </div>
+
+        <div class="spectral-payback-{{ payback_id }}__reward">
+          <span>REFUND REWARD</span>
+          <strong>{{ reward_money }}</strong>
+        </div>
+
+        <div class="spectral-payback-{{ payback_id }}__share">
+          <div class="spectral-payback-{{ payback_id }}__code">
+            <span>{{ code }}</span>
+            <button type="button" data-copy="{{ share_url | escape }}">COPY CODE</button>
+          </div>
+
+          <div class="spectral-payback-{{ payback_id }}__actions">
+            <button type="button" data-copy="{{ share_url | escape }}">COPY MY LINK</button>
+            <button type="button" data-text="{{ share_url | escape }}">TEXT IT</button>
+            <button type="button" data-share="{{ share_url | escape }}">SHARE</button>
+            {% if status == 'UNLOCKED' or status == 'PENDING_VERIFICATION' %}
+              <a class="sp-button" href="mailto:ride@spectraldesigns.co?subject=Spectral%20Payback%20Claim%20{{ code }}">REQUEST PAYBACK</a>
+            {% endif %}
+          </div>
+        </div>
+
+        <div class="spectral-payback-{{ payback_id }}__notice">
+          Your referral code is for attribution only. Your order details and refund eligibility are shown here because you are signed in as the challenge owner.
+        </div>
+      </div>
+
+    {% else %}
+      <p class="spectral-payback-{{ payback_id }}__eyebrow">SPECTRAL PAYBACK</p>
+      <h1>HELP A RIDER GET THEIR ORDER BACK.</h1>
+      <p class="spectral-payback-{{ payback_id }}__lead">Use the referral link you were sent to shop a qualifying product and help the original rider complete their Payback challenge.</p>
+
+      <div class="spectral-payback-{{ payback_id }}__locked" id="spectral-payback-public-{{ payback_id }}">
+        <h2 id="sp-public-title-{{ payback_id }}">Loading challenge…</h2>
+        <p class="spectral-payback-{{ payback_id }}__muted" id="sp-public-copy-{{ payback_id }}">Your referral code will be applied when you start shopping.</p>
+        <a class="sp-button" id="sp-public-shop-{{ payback_id }}" href="/pages/payback">START SHOPPING</a>
+      </div>
+
+      <p class="spectral-payback-{{ payback_id }}__rules">
+        Qualifying purchases must be made by a new customer and must meet the challenge's product/value rules. Canceled, refunded, duplicate, self-referred, and otherwise nonqualifying orders do not count.
+      </p>
+    {% endif %}
+
+    {% if customer == blank %}
+      <p class="spectral-payback-{{ payback_id }}__rules">
+        Already bought an eligible product? Sign in to your customer account to see your own Payback challenge and verified progress.
+      </p>
+    {% endif %}
+
+  </div>
+</section>
+
+<script>
+(() => {
+  const root = document.querySelector('.spectral-payback-{{ payback_id }}');
+  if (!root || root.dataset.bound === '1') return;
+  root.dataset.bound = '1';
+
+  const copyValue = async (value, button) => {
+    try {
+      await navigator.clipboard.writeText(value);
+      const old = button.textContent;
+      button.textContent = 'COPIED';
+      window.setTimeout(() => button.textContent = old, 1400);
+    } catch (_) {
+      window.prompt('Copy your link:', value);
+    }
+  };
+
+  root.querySelectorAll('[data-copy]').forEach((button) => {
+    button.addEventListener('click', () => copyValue(button.dataset.copy, button));
+  });
+
+  root.querySelectorAll('[data-text]').forEach((button) => {
+    button.addEventListener('click', () => {
+      window.location.href = 'sms:?&body=' + encodeURIComponent(button.dataset.text);
+    });
+  });
+
+  root.querySelectorAll('[data-share]').forEach((button) => {
+    button.addEventListener('click', async () => {
+      const url = button.dataset.share;
+      if (navigator.share) {
+        try { await navigator.share({ title: 'Spectral Payback', url }); } catch (_) {}
+      } else {
+        await copyValue(url, button);
+      }
+    });
+  });
+
+  {% unless customer %}
+    const publicChallenges = [
+      {% for challenge in metaobjects.sidekick_payback_challenge.values %}
+        {% assign pstatus = challenge.status.value | upcase %}
+        {% if pstatus == 'ACTIVE' %}
+          {
+            code: {{ challenge.referral_code.value | json }},
+            product: {{ challenge.product_title.value | json }},
+            required: {{ challenge.required_referrals.value | plus: 0 | json }},
+            image: {{ challenge.product_image.value | json }}
+          }{% unless forloop.last %},{% endunless %}
+        {% endif %}
+      {% endfor %}
+    ];
+
+    const params = new URLSearchParams(window.location.search);
+    const ref = params.get('ref');
+    const match = ref ? publicChallenges.find((item) => item.code.toLowerCase() === ref.toLowerCase()) : null;
+
+    if (match) {
+      const title = root.querySelector('#sp-public-title-{{ payback_id }}');
+      const copy = root.querySelector('#sp-public-copy-{{ payback_id }}');
+      const shop = root.querySelector('#sp-public-shop-{{ payback_id }}');
+
+      title.textContent = match.product;
+      copy.textContent = 'Complete a qualifying purchase of this product through this referral to support the rider’s Payback challenge.';
+      shop.href = '/discount/' + encodeURIComponent(match.code) + '?redirect=' + encodeURIComponent('/search?q=' + match.product);
+      shop.textContent = 'SHOP THIS PRODUCT';
+
+      const image = document.createElement('img');
+      if (match.image) {
+        image.src = match.image;
+        image.alt = match.product;
+        image.width = 120;
+        image.height = 120;
+        image.style.cssText = 'display:block;width:120px;height:120px;object-fit:cover;margin:0 0 18px;background:var(--sp-bg);';
+        root.querySelector('#spectral-payback-public-{{ payback_id }}').prepend(image);
+      }
+    } else if (ref) {
+      root.querySelector('#sp-public-title-{{ payback_id }}').textContent = 'INVALID REFERRAL';
+      root.querySelector('#sp-public-copy-{{ payback_id }}').textContent = 'That Payback link is no longer active or could not be found.';
+      root.querySelector('#sp-public-shop-{{ payback_id }}').style.display = 'none';
+    } else {
+      root.querySelector('#sp-public-title-{{ payback_id }}').textContent = 'SIGN IN TO VIEW YOUR PAYBACK';
+      root.querySelector('#sp-public-copy-{{ payback_id }}').textContent = 'Open your customer account to see challenges tied to purchases you have made.';
+      root.querySelector('#sp-public-shop-{{ payback_id }}').href = '/account/login?return_url=%2Fpages%2Fpayback';
+      root.querySelector('#sp-public-shop-{{ payback_id }}').textContent = 'SIGN IN';
+    }
+  {% endunless %}
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Spectral Payback Live",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Visuals"
+    },
+    {
+      "type": "text",
+      "id": "campaign_line",
+      "label": "Campaign line",
+      "default": "DESIGN. BUILD. RIDE. REPEAT."
+    },
+    {
+      "type": "font_picker",
+      "id": "heading_font",
+      "label": "Heading font",
+      "default": "system_ui_n7"
+    },
+    {
+      "type": "font_picker",
+      "id": "body_font",
+      "label": "Body font",
+      "default": "mono"
+    },
+    {
+      "type": "color",
+      "id": "surface_color",
+      "label": "Surface",
+      "default": "#050607"
+    },
+    {
+      "type": "color",
+      "id": "card_color",
+      "label": "Card",
+      "default": "#0D1117"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#F4F7FB"
+    },
+    {
+      "type": "color",
+      "id": "muted_color",
+      "label": "Muted text",
+      "default": "#CFD7E6"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent",
+      "default": "#9BC2FF"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border",
+      "default": "#4D8DFF"
+    },
+    {
+      "type": "color",
+      "id": "track_color",
+      "label": "Progress track",
+      "default": "#173B7A"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Spectral Payback Live"
+    }
+  ]
+}
+{% endschema %}
