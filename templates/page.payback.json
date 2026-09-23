@@ -1,0 +1,33 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "blocks": {
+        "spectral_payback_live": {
+          "type": "spectral-payback-live",
+          "settings": {
+            "campaign_line": "DESIGN. BUILD. RIDE. REPEAT.",
+            "heading_font": "system_ui_n7",
+            "body_font": "mono",
+            "surface_color": "#050607",
+            "card_color": "#0D1117",
+            "text_color": "#F4F7FB",
+            "muted_color": "#CFD7E6",
+            "accent_color": "#9BC2FF",
+            "border_color": "#4D8DFF",
+            "track_color": "#173B7A"
+          }
+        }
+      },
+      "block_order": ["spectral_payback_live"],
+      "settings": {
+        "content_direction": "column",
+        "gap": 0,
+        "background_color": "{{ settings.color_palette.background }}",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    }
+  },
+  "order": ["main"]
+}
