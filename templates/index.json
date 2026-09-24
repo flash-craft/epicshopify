@@ -1,0 +1,157 @@
+{
+  "sections": {
+    "kynza_hero": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<section class=\"kynza-hero\" aria-labelledby=\"kynza-hero-title\"><div class=\"kynza-hero__copy\"><p class=\"kynza-eyebrow\">KYNZA / THE BEAUTY EDIT</p><h1 id=\"kynza-hero-title\">Beauty, <em>curated.</em></h1><p class=\"kynza-lede\">A focused edit of skincare, body care and beauty essentials worth making room for.</p><div class=\"kynza-actions\"><a class=\"kynza-button kynza-button--dark\" href=\"{{ routes.all_products_collection_url }}\">Shop the edit</a><a class=\"kynza-link\" href=\"{{ routes.search_url }}\">Search products →</a></div></div><div class=\"kynza-hero__visual\">{% assign hero_product = collections.all.products.first %}{% if hero_product and hero_product.featured_image %}<a href=\"{{ hero_product.url }}\" class=\"kynza-hero__product\"><img src=\"{{ hero_product.featured_image | image_url: width: 1100 }}\" alt=\"{{ hero_product.featured_image.alt | default: hero_product.title | escape }}\" width=\"1100\" height=\"1375\" loading=\"eager\"><span>Featured find · {{ hero_product.title | escape }} →</span></a>{% endif %}</div></section>",
+        "section_width": "full-width",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
+    "kynza_intro": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<section class=\"kynza-intro\"><div><p class=\"kynza-eyebrow\">01 / THE EDIT</p><h2>Less scrolling.<br><em>Better finds.</em></h2></div><div class=\"kynza-intro__copy\"><p>We keep the selection intentional: products that are useful, beautiful and easy to understand.</p><a class=\"kynza-link\" href=\"{{ routes.all_products_collection_url }}\">See everything →</a></div></section>",
+        "section_width": "page-width",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
+    "kynza_categories": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<section class=\"kynza-categories\"><div class=\"kynza-section-head\"><p class=\"kynza-eyebrow\">02 / SHOP BY CATEGORY</p><h2>Start with what<br><em>you need.</em></h2></div><div class=\"kynza-category-grid\"><a href=\"{{ routes.search_url }}?q=skincare\"><span>01</span><strong>Skincare</strong><small>Cleanse · treat · hydrate →</small></a><a href=\"{{ routes.search_url }}?q=makeup\"><span>02</span><strong>Makeup</strong><small>Easy everyday essentials →</small></a><a href=\"{{ routes.search_url }}?q=body\"><span>03</span><strong>Body</strong><small>Care from head to toe →</small></a><a href=\"{{ routes.all_products_collection_url }}?sort_by=best-selling\"><span>04</span><strong>Best sellers</strong><small>What customers keep coming back for →</small></a></div></section>",
+        "section_width": "page-width",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
+    "kynza_products": {
+      "type": "product-list",
+      "settings": {
+        "collection": "all",
+        "layout_type": "grid",
+        "carousel_on_mobile": false,
+        "max_products": 8,
+        "columns": 4,
+        "mobile_columns": "2",
+        "columns_gap": 20,
+        "rows_gap": 42,
+        "icons_style": "none",
+        "icons_shape": "none",
+        "section_width": "page-width",
+        "horizontal_alignment": "flex-start",
+        "gap": 32,
+        "background_color": "",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      },
+      "blocks": {
+        "static-header": {
+          "type": "_product-list-content",
+          "static": true,
+          "settings": {
+            "content_direction": "row",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "space-between",
+            "vertical_alignment": "flex-end",
+            "align_baseline": true,
+            "gap": 12,
+            "width": "fill",
+            "height": "fit"
+          },
+          "blocks": {
+            "title": {
+              "type": "_product-list-text",
+              "settings": {
+                "text": "<p>03 / FEATURED PRODUCTS</p><h2>Good products.<br><em>No filler.</em></h2>",
+                "width": "fit-content",
+                "alignment": "left",
+                "type_preset": "h3",
+                "font": "var(--font-body--family)",
+                "wrap": "pretty"
+              }
+            },
+            "shop-all": {
+              "type": "_product-list-button",
+              "settings": {
+                "label": "View all →",
+                "open_in_new_tab": false,
+                "style_class": "link",
+                "width": "fit-content",
+                "width_mobile": "fit-content"
+              }
+            }
+          },
+          "block_order": ["title","shop-all"]
+        },
+        "static-product-card": {
+          "type": "_product-card",
+          "static": true,
+          "settings": {
+            "product_card_gap": 8,
+            "border": "none",
+            "border_width": 0,
+            "border_opacity": 0,
+            "border_radius": 0
+          },
+          "blocks": {
+            "gallery": {
+              "type": "_product-card-gallery",
+              "settings": {
+                "image_ratio": "adapt",
+                "border": "none",
+                "border_width": 0,
+                "border_opacity": 0,
+                "border_radius": 0
+              }
+            },
+            "title": {
+              "type": "product-title",
+              "settings": {
+                "width": "100%",
+                "alignment": "left",
+                "type_preset": "paragraph",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "1.4",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "padding-block-start": 10
+              }
+            },
+            "price": {
+              "type": "price",
+              "settings": {
+                "show_sale_price_first": true,
+                "show_installments": false,
+                "show_tax_info": false,
+                "type_preset": "paragraph",
+                "width": "100%",
+                "alignment": "left",
+                "font": "var(--font-body--family)",
+                "font_size": "0.95rem",
+                "line_height": "1.4",
+                "letter_spacing": "normal",
+                "case": "none"
+              }
+            }
+          },
+          "block_order": ["gallery","title","price"]
+        }
+      }
+    },
+    "kynza_close": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<section class=\"kynza-close\"><div><p class=\"kynza-eyebrow\">04 / KYNZA</p><h2>Find your next<br><em>favorite.</em></h2><p>Simple browsing, clear product information and a tighter edit from start to checkout.</p></div><a class=\"kynza-button kynza-button--light\" href=\"{{ routes.all_products_collection_url }}\">Shop all products</a></section>",
+        "section_width": "full-width",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    }
+  },
+  "order": ["kynza_hero","kynza_intro","kynza_categories","kynza_products","kynza_close"]
+}

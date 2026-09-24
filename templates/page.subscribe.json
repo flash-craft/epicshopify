@@ -1,0 +1,24 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "{% assign subscription_count = 0 %}<section class=\"sco-subscribe-page\"><div class=\"sco-subscribe-page__hero\"><p class=\"sco-eyebrow\">SPECTRAL &amp; CO / SUBSCRIBE &amp; SAVE</p><h1>YOUR BEAUTY ROUTINE,<br><em>ON REPEAT.</em></h1><p>Choose products you genuinely use, then let your future self stop remembering to reorder them.</p></div><div class=\"sco-subscribe-page__grid\">{% for product in collections.all.products %}{% if product.selling_plan_groups.size > 0 %}{% assign subscription_count = subscription_count | plus: 1 %}<a class=\"sco-subscribe-page__card\" href=\"{{ product.url }}\">{% if product.featured_image %}<img src=\"{{ product.featured_image | image_url: width: 1000 }}\" alt=\"{{ product.featured_image.alt | default: product.title | escape }}\" loading=\"lazy\" width=\"1000\" height=\"1250\">{% endif %}<div><small>{{ product.selling_plan_groups.first.name | escape }}</small><strong>{{ product.title | escape }}</strong><span>{{ product.price | money }} · VIEW PLANS →</span></div></a>{% endif %}{% endfor %}{% if subscription_count == 0 %}<div class=\"sco-subscribe-page__empty\"><strong>Subscription-ready products are coming.</strong><p>Once you add selling plans to products, this page will automatically surface them here.</p><a class=\"sco-btn sco-btn--primary\" href=\"{{ routes.all_products_collection_url }}\">SHOP THE EDIT</a></div>{% endif %}</div></section>",
+        "background_color": "",
+        "section_width": "full-width",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    }
+  },
+  "order": ["main"]
+}
