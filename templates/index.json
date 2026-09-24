@@ -1,263 +1,157 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- * ------------------------------------------------------------
- */{
+{
   "sections": {
-    "product_list_fa6P9H": {
+    "kynza_hero": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<section class=\"kynza-hero\" aria-labelledby=\"kynza-hero-title\"><div class=\"kynza-hero__copy\"><p class=\"kynza-eyebrow\">KYNZA / THE BEAUTY EDIT</p><h1 id=\"kynza-hero-title\">Beauty, <em>curated.</em></h1><p class=\"kynza-lede\">A focused edit of skincare, body care and beauty essentials worth making room for.</p><div class=\"kynza-actions\"><a class=\"kynza-button kynza-button--dark\" href=\"{{ routes.all_products_collection_url }}\">Shop the edit</a><a class=\"kynza-link\" href=\"{{ routes.search_url }}\">Search products →</a></div></div><div class=\"kynza-hero__visual\">{% assign hero_product = collections.all.products.first %}{% if hero_product and hero_product.featured_image %}<a href=\"{{ hero_product.url }}\" class=\"kynza-hero__product\"><img src=\"{{ hero_product.featured_image | image_url: width: 1100 }}\" alt=\"{{ hero_product.featured_image.alt | default: hero_product.title | escape }}\" width=\"1100\" height=\"1375\" loading=\"eager\"><span>Featured find · {{ hero_product.title | escape }} →</span></a>{% endif %}</div></section>",
+        "section_width": "full-width",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
+    "kynza_intro": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<section class=\"kynza-intro\"><div><p class=\"kynza-eyebrow\">01 / THE EDIT</p><h2>Less scrolling.<br><em>Better finds.</em></h2></div><div class=\"kynza-intro__copy\"><p>We keep the selection intentional: products that are useful, beautiful and easy to understand.</p><a class=\"kynza-link\" href=\"{{ routes.all_products_collection_url }}\">See everything →</a></div></section>",
+        "section_width": "page-width",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
+    "kynza_categories": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<section class=\"kynza-categories\"><div class=\"kynza-section-head\"><p class=\"kynza-eyebrow\">02 / SHOP BY CATEGORY</p><h2>Start with what<br><em>you need.</em></h2></div><div class=\"kynza-category-grid\"><a href=\"{{ routes.search_url }}?q=skincare\"><span>01</span><strong>Skincare</strong><small>Cleanse · treat · hydrate →</small></a><a href=\"{{ routes.search_url }}?q=makeup\"><span>02</span><strong>Makeup</strong><small>Easy everyday essentials →</small></a><a href=\"{{ routes.search_url }}?q=body\"><span>03</span><strong>Body</strong><small>Care from head to toe →</small></a><a href=\"{{ routes.all_products_collection_url }}?sort_by=best-selling\"><span>04</span><strong>Best sellers</strong><small>What customers keep coming back for →</small></a></div></section>",
+        "section_width": "page-width",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
+    "kynza_products": {
       "type": "product-list",
-      "blocks": {
-        "static-header": {
-          "type": "_product-list-content",
-          "name": "t:names.header",
-          "static": true,
-          "settings": {
-            "content_direction": "row",
-            "vertical_on_mobile": false,
-            "horizontal_alignment": "space-between",
-            "vertical_alignment": "flex-end",
-            "align_baseline": true,
-            "horizontal_alignment_flex_direction_column": "flex-start",
-            "vertical_alignment_flex_direction_column": "center",
-            "gap": 12,
-            "width": "fill",
-            "custom_width": 100,
-            "width_mobile": "fill",
-            "custom_width_mobile": 100,
-            "height": "fit",
-            "custom_height": 100,
-            "background_media": "none",
-            "video_position": "cover",
-            "background_image_position": "cover",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {
-            "product_list_text_YFtzcL": {
-              "type": "_product-list-text",
-              "name": "t:names.collection_title",
-              "settings": {
-                "text": "<h2>THE SHELF <span>— 10 GOOD THINGS</span></h2>",
-                "width": "fit-content",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "h3",
-                "font": "var(--font-body--family)",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "product_list_button_MWeP9V": {
-              "type": "_product-list-button",
-              "name": "t:names.product_list_button",
-              "settings": {
-                "label": "SHOP ALL",
-                "open_in_new_tab": false,
-                "style_class": "link",
-                "width": "fit-content",
-                "custom_width": 100,
-                "width_mobile": "fit-content",
-                "custom_width_mobile": 100
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "product_list_text_YFtzcL",
-            "product_list_button_MWeP9V"
-          ]
-        },
-        "static-product-card": {
-          "type": "_product-card",
-          "name": "t:names.product_card",
-          "static": true,
-          "settings": {
-            "product_card_gap": 4,
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {
-            "product_card_gallery_677WP3": {
-              "type": "_product-card-gallery",
-              "name": "t:names.product_card_media",
-              "settings": {
-                "image_ratio": "adapt",
-                "border": "none",
-                "border_width": 1,
-                "border_opacity": 100,
-                "border_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "product_title_YXxMTj": {
-              "type": "product-title",
-              "name": "t:names.product_title",
-              "settings": {
-                "width": "100%",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "rte",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 4,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "price_JQzVV4": {
-              "type": "price",
-              "name": "t:names.product_price",
-              "settings": {
-                "show_sale_price_first": true,
-                "show_installments": false,
-                "show_tax_info": false,
-                "type_preset": "h6",
-                "width": "100%",
-                "alignment": "left",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "product_card_gallery_677WP3",
-            "product_title_YXxMTj",
-            "price_JQzVV4"
-          ]
-        }
-      },
-      "name": "t:names.product_list",
       "settings": {
         "collection": "all",
         "layout_type": "grid",
         "carousel_on_mobile": false,
-        "max_products": 10,
-        "columns": 5,
+        "max_products": 8,
+        "columns": 4,
         "mobile_columns": "2",
-        "mobile_card_size": "60cqw",
-        "columns_gap": 16,
-        "rows_gap": 34,
-        "icons_style": "arrow",
+        "columns_gap": 20,
+        "rows_gap": 42,
+        "icons_style": "none",
         "icons_shape": "none",
         "section_width": "page-width",
         "horizontal_alignment": "flex-start",
-        "gap": 28,
-        "background_color": "{{ settings.color_palette.background }}",
-        "padding-block-start": 0,
-        "padding-block-end": 78
-      }
-    },
-    "sco_hero": {
-      "type": "custom-liquid",
-      "settings": {
-        "custom_liquid": "{% assign hero_product = collections.all.products.first %}\n<section class=\"sco-hero\" aria-labelledby=\"sco-hero-title\">\n  <div class=\"sco-hero__inner\">\n    <div class=\"sco-hero__copy\">\n      <p class=\"sco-kicker\">KYNZA / THE BEAUTY EDIT</p>\n      <h1 id=\"sco-hero-title\">BEAUTY, <em>CURATED.</em></h1>\n      <p class=\"sco-hero__lede\">The good stuff, without the endless scrolling. Discover a considered edit of beauty made for everyday rituals, little luxuries, and everything in between.</p>\n      <div class=\"sco-hero__actions\">\n        <a class=\"sco-btn sco-btn--primary\" href=\"{{ routes.all_products_collection_url }}\">EXPLORE THE EDIT</a>\n        <a class=\"sco-btn sco-btn--secondary\" href=\"{{ routes.search_url }}\">SEARCH BEAUTY</a>\n      </div>\n      <div class=\"sco-hero__details\">\n        <div class=\"sco-hero__detail\"><strong>EDITED</strong><span>Less noise. Better finds.</span></div>\n        <div class=\"sco-hero__detail\"><strong>BEAUTIFUL</strong><span>Designed to look as good as it feels.</span></div>\n        <div class=\"sco-hero__detail\"><strong>SIMPLE</strong><span>Quick shopping from browse to checkout.</span></div>\n      </div>\n    </div>\n    <div class=\"sco-hero__visual\">\n      <div class=\"sco-hero__orb sco-hero__orb--one\"></div>\n      <div class=\"sco-hero__orb sco-hero__orb--two\"></div>\n      {% if hero_product and hero_product.featured_image %}\n        <a class=\"sco-hero__product\" href=\"{{ hero_product.url }}\" aria-label=\"Shop {{ hero_product.title | escape }}\">\n          <img src=\"{{ hero_product.featured_image | image_url: width: 1100 }}\" alt=\"{{ hero_product.featured_image.alt | default: hero_product.title | escape }}\" loading=\"eager\" width=\"1100\" height=\"1375\">\n          <span>FEATURED FIND · SHOP →</span>\n        </a>\n      {% endif %}\n      <span class=\"sco-hero__stamp\">THE NEW OBSESSION<br><small>BEAUTY / DAILY</small></span>\n    </div>\n  </div>\n</section>",
+        "gap": 32,
         "background_color": "",
-        "section_width": "full-width",
         "padding-block-start": 0,
         "padding-block-end": 0
+      },
+      "blocks": {
+        "static-header": {
+          "type": "_product-list-content",
+          "static": true,
+          "settings": {
+            "content_direction": "row",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "space-between",
+            "vertical_alignment": "flex-end",
+            "align_baseline": true,
+            "gap": 12,
+            "width": "fill",
+            "height": "fit"
+          },
+          "blocks": {
+            "title": {
+              "type": "_product-list-text",
+              "settings": {
+                "text": "<p>03 / FEATURED PRODUCTS</p><h2>Good products.<br><em>No filler.</em></h2>",
+                "width": "fit-content",
+                "alignment": "left",
+                "type_preset": "h3",
+                "font": "var(--font-body--family)",
+                "wrap": "pretty"
+              }
+            },
+            "shop-all": {
+              "type": "_product-list-button",
+              "settings": {
+                "label": "View all →",
+                "open_in_new_tab": false,
+                "style_class": "link",
+                "width": "fit-content",
+                "width_mobile": "fit-content"
+              }
+            }
+          },
+          "block_order": ["title","shop-all"]
+        },
+        "static-product-card": {
+          "type": "_product-card",
+          "static": true,
+          "settings": {
+            "product_card_gap": 8,
+            "border": "none",
+            "border_width": 0,
+            "border_opacity": 0,
+            "border_radius": 0
+          },
+          "blocks": {
+            "gallery": {
+              "type": "_product-card-gallery",
+              "settings": {
+                "image_ratio": "adapt",
+                "border": "none",
+                "border_width": 0,
+                "border_opacity": 0,
+                "border_radius": 0
+              }
+            },
+            "title": {
+              "type": "product-title",
+              "settings": {
+                "width": "100%",
+                "alignment": "left",
+                "type_preset": "paragraph",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "1.4",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "padding-block-start": 10
+              }
+            },
+            "price": {
+              "type": "price",
+              "settings": {
+                "show_sale_price_first": true,
+                "show_installments": false,
+                "show_tax_info": false,
+                "type_preset": "paragraph",
+                "width": "100%",
+                "alignment": "left",
+                "font": "var(--font-body--family)",
+                "font_size": "0.95rem",
+                "line_height": "1.4",
+                "letter_spacing": "normal",
+                "case": "none"
+              }
+            }
+          },
+          "block_order": ["gallery","title","price"]
+        }
       }
     },
-    "sco_discover": {
+    "kynza_close": {
       "type": "custom-liquid",
       "settings": {
-        "custom_liquid": "{% assign mood1 = collections.all.products[0] %}{% assign mood2 = collections.all.products[1] %}{% assign mood3 = collections.all.products[2] %}{% assign mood4 = collections.all.products[3] %}\n<section class=\"sco-section sco-moods\" aria-labelledby=\"sco-discover-title\">\n  <div class=\"sco-section__heading\">\n    <div><p class=\"sco-eyebrow\">01 / SHOP THE MOOD</p><h2 id=\"sco-discover-title\">WHAT ARE WE INTO<br><em>RIGHT NOW?</em></h2></div>\n    <a class=\"sco-text-link\" href=\"{{ routes.all_products_collection_url }}\">VIEW EVERYTHING →</a>\n  </div>\n  <div class=\"sco-mood-grid\">\n    <a class=\"sco-mood-card sco-mood-card--tall\" href=\"{{ routes.search_url }}?q=skincare\"{% if mood1.featured_image %} style=\"--mood-image: url('{{ mood1.featured_image | image_url: width: 1200 }}')\"{% endif %}>\n      <span>01 / SKIN</span><strong>Reset.<br>Replenish.<br>Glow.</strong><small>Shop skincare →</small>\n    </a>\n    <a class=\"sco-mood-card\" href=\"{{ routes.search_url }}?q=makeup\"{% if mood2.featured_image %} style=\"--mood-image: url('{{ mood2.featured_image | image_url: width: 900 }}')\"{% endif %}>\n      <span>02 / MAKEUP</span><strong>A little<br>more.</strong><small>Shop makeup →</small>\n    </a>\n    <a class=\"sco-mood-card sco-mood-card--dark\" href=\"/collections/all?sort_by=best-selling\"{% if mood3.featured_image %} style=\"--mood-image: url('{{ mood3.featured_image | image_url: width: 900 }}')\"{% endif %}>\n      <span>03 / THE EDIT</span><strong>Customer<br>favorites.</strong><small>See bestsellers →</small>\n    </a>\n    <a class=\"sco-mood-card\" href=\"/collections/all?sort_by=created-descending\"{% if mood4.featured_image %} style=\"--mood-image: url('{{ mood4.featured_image | image_url: width: 900 }}')\"{% endif %}>\n      <span>04 / JUST IN</span><strong>Newness,<br>right this way.</strong><small>Shop new in →</small>\n    </a>\n  </div>\n</section>",
-        "background_color": "",
-        "section_width": "page-width",
-        "padding-block-start": 0,
-        "padding-block-end": 0
-      }
-    },
-    "sco_routine": {
-      "type": "custom-liquid",
-      "settings": {
-        "custom_liquid": "<section class=\"sco-section sco-routine-section\" aria-labelledby=\"sco-routine-title\">\n  <div class=\"sco-section__heading\">\n    <div>\n      <p class=\"sco-eyebrow\">04 / WHY KYNZA</p>\n      <h2 id=\"sco-routine-title\">A BEAUTY SHOP THAT GETS OUT OF YOUR WAY.</h2>\n    </div>\n    <a class=\"sco-text-link\" href=\"{{ routes.cart_url }}\">GO TO CART →</a>\n  </div>\n  <div class=\"sco-routine\">\n    <div class=\"sco-routine__copy\">\n      <p>Big imagery. Clear choices. Quick add. A cart that stays close by. Everything is designed to help you find the right product and move on with your day.</p>\n      <div class=\"sco-routine__links\">\n        <a href=\"{{ routes.all_products_collection_url }}\">SHOP ALL</a>\n        <a href=\"{{ routes.search_url }}\">SEARCH</a>\n        <a href=\"{{ routes.cart_url }}\">CART</a>\n      </div>\n    </div>\n    <div class=\"sco-routine__list\">\n      <a class=\"sco-routine__item\" href=\"{{ routes.all_products_collection_url }}\"><strong>01</strong><span>Clean, high-impact product presentation</span><b>→</b></a>\n      <a class=\"sco-routine__item\" href=\"/collections/all?sort_by=best-selling\"><strong>02</strong><span>Customer favorites, surfaced fast</span><b>→</b></a>\n      <a class=\"sco-routine__item\" href=\"/collections/all?sort_by=created-descending\"><strong>03</strong><span>Newness without the hunt</span><b>→</b></a>\n      <a class=\"sco-routine__item\" href=\"#sco-subscribe\"><strong>04</strong><span>Recurring beauty, when you want it</span><b>→</b></a>\n    </div>\n  </div>\n  <div class=\"sco-social-strip\"><div><strong>YOUR NEXT FAVORITE MIGHT BE ONE CLICK AWAY.</strong><span>Browse the edit, save your favorites, and keep your routine moving.</span></div><a class=\"sco-btn sco-btn--secondary\" href=\"{{ routes.all_products_collection_url }}\">SHOP NOW</a></div>\n</section>",
-        "background_color": "",
-        "section_width": "full-width",
-        "padding-block-start": 0,
-        "padding-block-end": 0
-      }
-    },
-    "sco_visuals": {
-      "type": "custom-liquid",
-      "settings": {
-        "custom_liquid": "<section class=\"sco-section sco-lookbook-section\" aria-labelledby=\"sco-lookbook-title\">\n  <div class=\"sco-section__heading\">\n    <div>\n      <p class=\"sco-eyebrow\">02 / THE SHELF</p>\n      <h2 id=\"sco-lookbook-title\">GOOD PRODUCTS.<br><em>GREAT CLOSE-UP.</em></h2>\n    </div>\n    <p class=\"sco-section__aside\">Scroll the shelf. Tap a product. Fall a little bit in love.</p>\n  </div>\n  <div class=\"sco-lookbook\">\n    {% assign lookbook_count = 0 %}\n    {% for product in collections.all.products limit: 5 %}\n      {% if product.featured_image %}\n        {% assign lookbook_count = lookbook_count | plus: 1 %}\n        <a class=\"sco-lookbook__card sco-lookbook__card--{{ lookbook_count }}\" href=\"{{ product.url }}\">\n          <img src=\"{{ product.featured_image | image_url: width: 1200 }}\" alt=\"{{ product.featured_image.alt | default: product.title | escape }}\" loading=\"lazy\" width=\"1200\" height=\"1500\">\n          <div class=\"sco-lookbook__overlay\">\n            <span>{{ product.vendor | default: 'SPECTRAL & CO' | escape }}</span>\n            <strong>{{ product.title | escape }}</strong>\n            <small>VIEW PRODUCT →</small>\n          </div>\n        </a>\n      {% endif %}\n    {% endfor %}\n    {% if lookbook_count == 0 %}\n      <a class=\"sco-lookbook__empty\" href=\"{{ routes.all_products_collection_url }}\">\n        <span>THE SHELF IS WAITING FOR YOUR FIRST PRODUCTS</span>\n        <strong>BUILD THE EDIT →</strong>\n      </a>\n    {% endif %}\n  </div>\n</section>",
-        "background_color": "",
-        "section_width": "full-width",
-        "padding-block-start": 0,
-        "padding-block-end": 0
-      }
-    },
-    "sco_subscribe": {
-      "type": "custom-liquid",
-      "settings": {
-        "custom_liquid": "<section id=\"sco-subscribe\" class=\"sco-subscribe\" aria-labelledby=\"sco-subscribe-title\">\n  <div class=\"sco-subscribe__inner\">\n    <div class=\"sco-subscribe__copy\">\n      <p class=\"sco-eyebrow\">03 / THE RITUAL</p>\n      <h2 id=\"sco-subscribe-title\">RUN OUT OF BEAUTY?<br><em>DON’T.</em></h2>\n      <p>Turn the products you actually use into a recurring ritual. Subscribe, save, and keep your everyday essentials on autopilot.</p>\n      <div class=\"sco-subscribe__perks\">\n        <span>✦ Flexible cadence</span>\n        <span>✦ Skip or cancel</span>\n        <span>✦ Less re-ordering</span>\n      </div>\n      <a class=\"sco-btn sco-btn--light\" href=\"{{ routes.all_products_collection_url }}\">SHOP SUBSCRIPTION-READY PRODUCTS</a>\n    </div>\n    <div class=\"sco-subscribe__cards\">\n      {% assign subscription_count = 0 %}\n      {% for product in collections.all.products limit: 12 %}\n        {% if product.selling_plan_groups.size > 0 %}\n          {% assign subscription_count = subscription_count | plus: 1 %}\n          <a class=\"sco-subscribe__card\" href=\"{{ product.url }}\">\n            {% if product.featured_image %}\n              <img src=\"{{ product.featured_image | image_url: width: 700 }}\" alt=\"{{ product.featured_image.alt | default: product.title | escape }}\" loading=\"lazy\" width=\"700\" height=\"875\">\n            {% endif %}\n            <div>\n              <small>{{ product.selling_plan_groups.first.name | escape }}</small>\n              <strong>{{ product.title | escape }}</strong>\n              <span>{{ product.price | money }} · SHOP &amp; SUBSCRIBE →</span>\n            </div>\n          </a>\n        {% endif %}\n      {% endfor %}\n      {% if subscription_count == 0 %}\n        <div class=\"sco-subscribe__setup\">\n          <span>SUBSCRIBE &amp; SAVE</span>\n          <strong>Make your everyday favorites automatic.</strong>\n          <p>Once subscription plans are attached to products, they’ll appear here automatically and the product pages can offer recurring purchase options.</p>\n          <a href=\"{{ routes.all_products_collection_url }}\">BROWSE THE EDIT →</a>\n        </div>\n      {% endif %}\n    </div>\n  </div>\n</section>",
-        "background_color": "",
-        "section_width": "full-width",
-        "padding-block-start": 0,
-        "padding-block-end": 0
-      }
-    },
-    "sco_intro": {
-      "type": "custom-liquid",
-      "settings": {
-        "custom_liquid": "<section class=\"sco-intro\" aria-labelledby=\"sco-intro-title\">\n  <div class=\"sco-intro__top\">\n    <p class=\"sco-eyebrow\">WELCOME TO KYNZA</p>\n    <span>BEAUTY, WITHOUT THE NOISE.</span>\n  </div>\n  <div class=\"sco-intro__body\">\n    <div>\n      <div class=\"sco-intro__type\">SKIN / BODY / MAKEUP / RITUAL</div>\n      <h2 id=\"sco-intro-title\">A CURATED PLACE FOR THE PRODUCTS YOU’LL ACTUALLY <em>LOVE.</em></h2>\n    </div>\n    <div class=\"sco-intro__copy\">\n      <p>We hunt for the beautiful, the clever, and the genuinely useful — then put the good stuff in one place.</p>\n      <a class=\"sco-text-link\" href=\"{{ routes.all_products_collection_url }}\">ENTER THE EDIT →</a>\n    </div>\n  </div>\n</section>",
-        "background_color": "",
+        "custom_liquid": "<section class=\"kynza-close\"><div><p class=\"kynza-eyebrow\">04 / KYNZA</p><h2>Find your next<br><em>favorite.</em></h2><p>Simple browsing, clear product information and a tighter edit from start to checkout.</p></div><a class=\"kynza-button kynza-button--light\" href=\"{{ routes.all_products_collection_url }}\">Shop all products</a></section>",
         "section_width": "full-width",
         "padding-block-start": 0,
         "padding-block-end": 0
       }
     }
   },
-  "order": [
-    "sco_intro",
-    "sco_hero",
-    "sco_discover",
-    "sco_visuals",
-    "product_list_fa6P9H",
-    "sco_subscribe",
-    "sco_routine"
-  ]
+  "order": ["kynza_hero","kynza_intro","kynza_categories","kynza_products","kynza_close"]
 }
