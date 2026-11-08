@@ -3,7 +3,7 @@
     "kynza_hero": {
       "type": "custom-liquid",
       "settings": {
-        "custom_liquid": "<section class=\"kynza-hero\" aria-labelledby=\"kynza-hero-title\"><div class=\"kynza-hero__copy\"><p class=\"kynza-eyebrow\">KYNZA / THE BEAUTY EDIT</p><h1 id=\"kynza-hero-title\">Beauty, <em>curated.</em></h1><p class=\"kynza-lede\">A focused edit of skincare, body care and beauty essentials worth making room for.</p><div class=\"kynza-actions\"><a class=\"kynza-button kynza-button--dark\" href=\"{{ routes.all_products_collection_url }}\">Shop the edit</a><a class=\"kynza-link\" href=\"{{ routes.search_url }}\">Search products →</a></div></div><div class=\"kynza-hero__visual\">{% assign hero_product = collections.all.products.first %}{% if hero_product and hero_product.featured_image %}<a href=\"{{ hero_product.url }}\" class=\"kynza-hero__product\"><img src=\"{{ hero_product.featured_image | image_url: width: 1100 }}\" alt=\"{{ hero_product.featured_image.alt | default: hero_product.title | escape }}\" width=\"1100\" height=\"1375\" loading=\"eager\"><span>Featured find · {{ hero_product.title | escape }} →</span></a>{% endif %}</div></section>",
+        "custom_liquid": "<section class=\"kynza-hero\" aria-labelledby=\"kynza-hero-title\"><div class=\"kynza-hero__copy\"><p class=\"kynza-eyebrow\"><span class=\"kynza-sparkle\" aria-hidden=\"true\">✦</span> THE KYNZA BEAUTY EDIT / VOL. 01</p><h1 id=\"kynza-hero-title\">Your beauty.<br><em>Your rules.</em></h1><p class=\"kynza-lede\">The little luxuries, daily essentials, and new obsessions that make getting ready the best part of your day.</p><div class=\"kynza-actions\"><a class=\"kynza-button kynza-button--dark\" href=\"{{ routes.all_products_collection_url }}\">Explore the edit <span aria-hidden=\"true\">↗</span></a><a class=\"kynza-link\" href=\"#kynza-discover\">Find your thing ↓</a></div><p class=\"kynza-hero__note\">CURATED FINDS <span aria-hidden=\"true\">✳</span> EVERYDAY RITUALS <span aria-hidden=\"true\">✳</span> ALL YOU</p></div><div class=\"kynza-hero__visual\">{% assign hero_product = collections.all.products.first %}{% if hero_product and hero_product.featured_image %}<a href=\"{{ hero_product.url }}\" class=\"kynza-hero__product\"><span class=\"kynza-hero__badge\">THE CURRENT CRUSH / 01</span><img src=\"{{ hero_product.featured_image | image_url: width: 1100 }}\" srcset=\"{{ hero_product.featured_image | image_url: width: 550 }} 550w, {{ hero_product.featured_image | image_url: width: 850 }} 850w, {{ hero_product.featured_image | image_url: width: 1100 }} 1100w\" sizes=\"(max-width: 900px) 90vw, 42vw\" alt=\"{{ hero_product.featured_image.alt | default: hero_product.title | escape }}\" width=\"1100\" height=\"1375\" fetchpriority=\"high\"><span class=\"kynza-hero__caption\">{{ hero_product.title | escape }} <span aria-hidden=\"true\">↗</span></span></a>{% else %}<div class=\"kynza-hero__placeholder\"><span>✳</span><strong>THE GOOD STUFF<br>STARTS HERE.</strong><small>YOUR NEXT FAVORITE IS WAITING</small></div>{% endif %}</div></section>",
         "section_width": "full-width",
         "padding-block-start": 0,
         "padding-block-end": 0
@@ -12,7 +12,7 @@
     "kynza_intro": {
       "type": "custom-liquid",
       "settings": {
-        "custom_liquid": "<section class=\"kynza-intro\"><div><p class=\"kynza-eyebrow\">01 / THE EDIT</p><h2>Less scrolling.<br><em>Better finds.</em></h2></div><div class=\"kynza-intro__copy\"><p>We keep the selection intentional: products that are useful, beautiful and easy to understand.</p><a class=\"kynza-link\" href=\"{{ routes.all_products_collection_url }}\">See everything →</a></div></section>",
+        "custom_liquid": "<section class=\"kynza-intro\" id=\"kynza-discover\"><div><p class=\"kynza-eyebrow\">01 / THE PHILOSOPHY</p><h2>A little extra.<br><em>Every day.</em></h2></div><div class=\"kynza-intro__copy\"><p>Good beauty isn't complicated. It's finding the things you love, using them on repeat, and feeling like yourself — only a little more radiant.</p><a class=\"kynza-link\" href=\"{{ routes.all_products_collection_url }}\">Meet your new favorites ↗</a></div></section>",
         "section_width": "page-width",
         "padding-block-start": 0,
         "padding-block-end": 0
@@ -21,7 +21,7 @@
     "kynza_categories": {
       "type": "custom-liquid",
       "settings": {
-        "custom_liquid": "<section class=\"kynza-categories\"><div class=\"kynza-section-head\"><p class=\"kynza-eyebrow\">02 / SHOP BY CATEGORY</p><h2>Start with what<br><em>you need.</em></h2></div><div class=\"kynza-category-grid\"><a href=\"{{ routes.search_url }}?q=skincare\"><span>01</span><strong>Skincare</strong><small>Cleanse · treat · hydrate →</small></a><a href=\"{{ routes.search_url }}?q=makeup\"><span>02</span><strong>Makeup</strong><small>Easy everyday essentials →</small></a><a href=\"{{ routes.search_url }}?q=body\"><span>03</span><strong>Body</strong><small>Care from head to toe →</small></a><a href=\"{{ routes.all_products_collection_url }}?sort_by=best-selling\"><span>04</span><strong>Best sellers</strong><small>What customers keep coming back for →</small></a></div></section>",
+        "custom_liquid": "<section class=\"kynza-categories\"><div class=\"kynza-section-head\"><p class=\"kynza-eyebrow\">02 / YOUR NEXT OBSESSION</p><h2>What are you<br><em>in the mood for?</em></h2><p class=\"kynza-section-subtitle\">Follow your curiosity. We'll handle the good finds.</p></div><div class=\"kynza-category-grid\"><a href=\"{{ routes.search_url }}?q=skincare\"><span>01 / THE GLOW UP</span><strong>Skincare <b aria-hidden=\"true\">↗</b></strong><small>Your daily feel-good ritual.</small></a><a href=\"{{ routes.search_url }}?q=makeup\"><span>02 / THE FINISHING TOUCH</span><strong>Makeup <b aria-hidden=\"true\">↗</b></strong><small>A little color, a lot of you.</small></a><a href=\"{{ routes.search_url }}?q=body\"><span>03 / THE RESET</span><strong>Body care <b aria-hidden=\"true\">↗</b></strong><small>Take a moment for yourself.</small></a><a href=\"{{ routes.all_products_collection_url }}?sort_by=best-selling\"><span>04 / THE GOOD LIST</span><strong>Most loved <b aria-hidden=\"true\">↗</b></strong><small>Discover the crowd favorites.</small></a></div></section>",
         "section_width": "page-width",
         "padding-block-start": 0,
         "padding-block-end": 0
@@ -84,7 +84,10 @@
               }
             }
           },
-          "block_order": ["title","shop-all"]
+          "block_order": [
+            "title",
+            "shop-all"
+          ]
         },
         "static-product-card": {
           "type": "_product-card",
@@ -139,19 +142,29 @@
               }
             }
           },
-          "block_order": ["gallery","title","price"]
+          "block_order": [
+            "gallery",
+            "title",
+            "price"
+          ]
         }
       }
     },
     "kynza_close": {
       "type": "custom-liquid",
       "settings": {
-        "custom_liquid": "<section class=\"kynza-close\"><div><p class=\"kynza-eyebrow\">04 / KYNZA</p><h2>Find your next<br><em>favorite.</em></h2><p>Simple browsing, clear product information and a tighter edit from start to checkout.</p></div><a class=\"kynza-button kynza-button--light\" href=\"{{ routes.all_products_collection_url }}\">Shop all products</a></section>",
+        "custom_liquid": "<section class=\"kynza-close\"><div><p class=\"kynza-eyebrow\">04 / KEEP DISCOVERING</p><h2>Consider this<br><em>your sign.</em></h2><p>New favorites are only a click away. Go on, find something that feels like you.</p></div><a class=\"kynza-button kynza-button--light\" href=\"{{ routes.all_products_collection_url }}\">Shop the full edit ↗</a></section>",
         "section_width": "full-width",
         "padding-block-start": 0,
         "padding-block-end": 0
       }
     }
   },
-  "order": ["kynza_hero","kynza_intro","kynza_categories","kynza_products","kynza_close"]
+  "order": [
+    "kynza_hero",
+    "kynza_intro",
+    "kynza_categories",
+    "kynza_products",
+    "kynza_close"
+  ]
 }
