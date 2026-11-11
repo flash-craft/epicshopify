@@ -1,8 +1,4 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- * ------------------------------------------------------------
- */{
+{
   "sections": {
     "main": {
       "type": "main-collection",
@@ -16,9 +12,9 @@
             "filter_width": "centered",
             "text_label_case": "default",
             "show_swatch_label": false,
-            "show_filter_label": false,
+            "show_filter_label": true,
             "enable_sorting": true,
-            "enable_grid_density": true,
+            "enable_grid_density": false,
             "padding-block-start": 8,
             "padding-block-end": 8,
             "padding-inline-start": 0,
@@ -113,7 +109,7 @@
       },
       "settings": {
         "layout_type": "grid",
-        "product_card_size": "small",
+        "product_card_size": "medium",
         "mobile_product_card_size": "small",
         "product_grid_width": "centered",
         "full_width_on_mobile": true,
@@ -123,13 +119,15 @@
         "padding-inline-end": 0,
         "background_color": "{{ settings.color_palette.background }}",
         "padding-block-start": 0,
-        "padding-block-end": 32
+        "padding-block-end": 32,
+        "enable_infinite_scroll": false,
+        "products_per_page": 24
       }
     },
     "kynza_collection_hero": {
       "type": "custom-liquid",
       "settings": {
-        "custom_liquid": "<section class=\"kynza-collection-hero\" aria-labelledby=\"kynza-collection-title\">\n  <div class=\"kynza-collection-hero__inner\">\n    <div>\n      <p class=\"sco-eyebrow\">KYNZA / THE EDIT</p>\n      <h1 id=\"kynza-collection-title\">{{ collection.title | escape }}</h1>\n      {% if collection.description != blank %}<p>{{ collection.description }}</p>{% else %}<p>Good beauty finds, gathered in one place.</p>{% endif %}\n      <div class=\"kynza-collection-hero__actions\">\n        <a class=\"sco-btn sco-btn--primary\" href=\"/collections/all?sort_by=best-selling\">SHOP BESTSELLERS</a>\n        <a class=\"sco-btn sco-btn--secondary\" href=\"/collections/all?sort_by=created-descending\">SEE NEW IN</a>\n      </div>\n    </div>\n    <div class=\"kynza-collection-hero__count\"><strong>{{ collection.products_count }}</strong><span>PRODUCTS<br>IN THE EDIT</span></div>\n  </div>\n</section>",
+        "custom_liquid": "<section class=\"kynza-collection-hero\" aria-labelledby=\"kynza-collection-title\">\n  <div class=\"kynza-collection-hero__inner\">\n    <div>\n      <p class=\"sco-eyebrow\">KYNZA / THE EDIT</p>\n      <h1 id=\"kynza-collection-title\">{{ collection.title | escape }}</h1>\n      {% if collection.description != blank %}<p>{{ collection.description }}</p>{% else %}<p>Good beauty finds, gathered in one place.</p>{% endif %}\n      <div class=\"kynza-collection-hero__actions\">\n        <a class=\"sco-btn sco-btn--primary\" href=\"/collections/all?sort_by=best-selling\">Shop bestsellers</a>\n        <a class=\"sco-btn sco-btn--secondary\" href=\"/collections/all?sort_by=created-descending\">See what's new</a>\n      </div>\n    </div>\n    <div class=\"kynza-collection-hero__count\"><strong>{{ collection.products_count }}</strong><span>PRODUCTS<br>IN THE EDIT</span></div>\n  </div>\n</section>",
         "background_color": "",
         "section_width": "full-width",
         "padding-block-start": 0,
