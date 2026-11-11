@@ -12,7 +12,7 @@
     "kynza_intro": {
       "type": "custom-liquid",
       "settings": {
-        "custom_liquid": "<section class=\"kynza-intro\" id=\"kynza-discover\"><div><p class=\"kynza-eyebrow\">01 / A ROUTINE THAT FEELS LIKE YOU</p><h2>Pick your mood.<br><em>Meet your mask.</em></h2></div><div class=\"kynza-intro__copy\"><p>Hydrate, brighten, reset, or simply take five. Explore easy-to-love skincare essentials and make a little room for yourself.</p><a class=\"kynza-link\" href=\"{{ routes.all_products_collection_url }}\">Explore every skin treat ↗</a></div></section>",
+        "custom_liquid": "<section class=\"kynza-intro\" id=\"kynza-discover\"><div><p class=\"kynza-eyebrow\">01 / SKINCARE THAT FITS YOUR LIFE</p><h2>Good skin days.<br><em>Your way.</em></h2></div><div class=\"kynza-intro__copy\"><p>KYNZA makes discovering skincare feel simple. Start with a sheet mask, find the formulas that fit your skin mood, and build a routine you actually look forward to.</p><a class=\"kynza-link\" href=\"{{ routes.all_products_collection_url }}\">Explore the KYNZA edit ↗</a></div></section>",
         "section_width": "page-width",
         "padding-block-start": 0,
         "padding-block-end": 0
@@ -65,7 +65,7 @@
             "title": {
               "type": "_product-list-text",
               "settings": {
-                "text": "<p>03 / THE KYNZA SKIN EDIT</p><h2>Your next<br><em>must-have.</em></h2>",
+                "text": "<p>03 / THE KYNZA SKIN EDIT</p><h2>Find your next<br><em>feel-good favorite.</em></h2><p>Easy-to-love skincare, picked for your everyday routine.</p>",
                 "width": "fit-content",
                 "alignment": "left",
                 "type_preset": "h3",
@@ -153,8 +153,17 @@
     "kynza_close": {
       "type": "custom-liquid",
       "settings": {
-        "custom_liquid": "<section class=\"kynza-close kynza-close--beauty\"><div><p class=\"kynza-eyebrow\">04 / MAKE A MOMENT FOR YOU</p><h2>Good skin days<br><em>look good on you.</em></h2><p>Start with one mask. Build a ritual you love. Your next little reset is waiting.</p></div><a class=\"kynza-button kynza-button--light\" href=\"{{ routes.all_products_collection_url }}\">Find your feel-good favorite ↗</a></section>",
+        "custom_liquid": "<section class=\"kynza-close kynza-close--beauty\"><div><p class=\"kynza-eyebrow\">05 / MAKE A MOMENT FOR YOU</p><h2>Good skin days<br><em>look good on you.</em></h2><p>Start with one mask. Find the essentials you love. Make your routine a little more you.</p></div><a class=\"kynza-button kynza-button--light\" href=\"{{ routes.all_products_collection_url }}\">Find your feel-good favorite ↗</a></section>",
         "section_width": "full-width",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
+    "kynza_routine": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "{% assign p_moisturizer = all_products['biome-boost-cream-daily-moisturizer'] %}{% assign p_spf = all_products['luxury-hybrid-daily-sunscreen-spf-50-with-ginseng-extract'] %}{% assign p_overnight = all_products['deep-collagen-glass-skin-overnight-mask-4-pack'] %}<section class=\"kynza-routine\" aria-labelledby=\"kynza-routine-title\"><div class=\"kynza-routine__head\"><div><p class=\"kynza-eyebrow\">04 / BUILD YOUR EVERYDAY RITUAL</p><h2 id=\"kynza-routine-title\">A little more than<br><em>a sheet mask.</em></h2><p>Meet the everyday essentials that round out your skincare shelf.</p></div><a class=\"kynza-link\" href=\"{{ routes.all_products_collection_url }}\">Shop all skincare ↗</a></div><div class=\"kynza-routine__grid\">{% if p_moisturizer != blank %}<a class=\"kynza-routine__card\" href=\"{{ p_moisturizer.url }}\"><div class=\"kynza-routine__image\"><img src=\"{{ p_moisturizer.featured_image | image_url: width: 900 }}\" alt=\"{{ p_moisturizer.featured_image.alt | default: p_moisturizer.title | escape }}\" loading=\"lazy\" width=\"900\" height=\"900\"></div><div class=\"kynza-routine__meta\"><span>DAILY ESSENTIAL / 01</span><h3>{{ p_moisturizer.title | escape }}</h3><p>Daily moisture + barrier support.</p><strong>Shop moisturizer ↗</strong></div></a>{% endif %}{% if p_spf != blank %}<a class=\"kynza-routine__card\" href=\"{{ p_spf.url }}\"><div class=\"kynza-routine__image\"><img src=\"{{ p_spf.featured_image | image_url: width: 900 }}\" alt=\"{{ p_spf.featured_image.alt | default: p_spf.title | escape }}\" loading=\"lazy\" width=\"900\" height=\"900\"></div><div class=\"kynza-routine__meta\"><span>DAILY ESSENTIAL / 02</span><h3>{{ p_spf.title | escape }}</h3><p>SPF 50 for your everyday routine.</p><strong>Shop sun care ↗</strong></div></a>{% endif %}{% if p_overnight != blank %}<a class=\"kynza-routine__card\" href=\"{{ p_overnight.url }}\"><div class=\"kynza-routine__image\"><img src=\"{{ p_overnight.featured_image | image_url: width: 900 }}\" alt=\"{{ p_overnight.featured_image.alt | default: p_overnight.title | escape }}\" loading=\"lazy\" width=\"900\" height=\"900\"></div><div class=\"kynza-routine__meta\"><span>YOUR NIGHT IN / 03</span><h3>{{ p_overnight.title | escape }}</h3><p>A collagen hydrogel mask for overnight care.</p><strong>Shop overnight care ↗</strong></div></a>{% endif %}</div></section>",
+        "section_width": "page-width",
         "padding-block-start": 0,
         "padding-block-end": 0
       }
@@ -165,6 +174,7 @@
     "kynza_intro",
     "kynza_categories",
     "kynza_products",
+    "kynza_routine",
     "kynza_close"
   ]
 }
