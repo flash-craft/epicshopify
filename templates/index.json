@@ -3,7 +3,7 @@
     "kynza_hero": {
       "type": "custom-liquid",
       "settings": {
-        "custom_liquid": "<section class=\"kynza-hero\" aria-labelledby=\"kynza-hero-title\"><div class=\"kynza-hero__copy\"><p class=\"kynza-eyebrow\">KYNZA / THE BEAUTY EDIT</p><h1 id=\"kynza-hero-title\">Beauty, <em>curated.</em></h1><p class=\"kynza-lede\">A focused edit of skincare, body care and beauty essentials worth making room for.</p><div class=\"kynza-actions\"><a class=\"kynza-button kynza-button--dark\" href=\"{{ routes.all_products_collection_url }}\">Shop the edit</a><a class=\"kynza-link\" href=\"{{ routes.search_url }}\">Search products →</a></div></div><div class=\"kynza-hero__visual\">{% assign hero_product = collections.all.products.first %}{% if hero_product and hero_product.featured_image %}<a href=\"{{ hero_product.url }}\" class=\"kynza-hero__product\"><img src=\"{{ hero_product.featured_image | image_url: width: 1100 }}\" alt=\"{{ hero_product.featured_image.alt | default: hero_product.title | escape }}\" width=\"1100\" height=\"1375\" loading=\"eager\"><span>Featured find · {{ hero_product.title | escape }} →</span></a>{% endif %}</div></section>",
+        "custom_liquid": "<section class=\"kynza-hero\" aria-labelledby=\"kynza-hero-title\"><div class=\"kynza-hero__copy\"><p class=\"kynza-eyebrow\"><span aria-hidden=\"true\">✦</span> KYNZA / THE BEAUTY EDIT</p><h1 id=\"kynza-hero-title\">Beauty, <em>curated.</em></h1><p class=\"kynza-lede\">A considered edit of skincare, body care and beauty essentials — chosen to make everyday routines feel a little more special.</p><div class=\"kynza-actions\"><a class=\"kynza-button kynza-button--dark\" href=\"{{ routes.all_products_collection_url }}\">Explore the edit</a><a class=\"kynza-link\" href=\"{{ routes.search_url }}\">Search products →</a></div></div><div class=\"kynza-hero__visual\">{% assign hero_product = collections.all.products.first %}{% if hero_product and hero_product.featured_image %}<a href=\"{{ hero_product.url }}\" class=\"kynza-hero__product\"><img src=\"{{ hero_product.featured_image | image_url: width: 1100 }}\" alt=\"{{ hero_product.featured_image.alt | default: hero_product.title | escape }}\" width=\"1100\" height=\"1375\" loading=\"eager\"><span>Featured find · {{ hero_product.title | escape }} →</span></a>{% endif %}</div></section>",
         "section_width": "full-width",
         "padding-block-start": 0,
         "padding-block-end": 0
@@ -12,7 +12,7 @@
     "kynza_intro": {
       "type": "custom-liquid",
       "settings": {
-        "custom_liquid": "<section class=\"kynza-intro\"><div><p class=\"kynza-eyebrow\">01 / THE EDIT</p><h2>Less scrolling.<br><em>Better finds.</em></h2></div><div class=\"kynza-intro__copy\"><p>We keep the selection intentional: products that are useful, beautiful and easy to understand.</p><a class=\"kynza-link\" href=\"{{ routes.all_products_collection_url }}\">See everything →</a></div></section>",
+        "custom_liquid": "<section class=\"kynza-intro\"><div><p class=\"kynza-eyebrow\">01 / THE EDIT</p><h2>Less scrolling.<br><em>Better finds.</em></h2></div><div class=\"kynza-intro__copy\"><p>Discover feel-good essentials, thoughtful details and new favorites for the rituals that are all your own.</p><a class=\"kynza-link\" href=\"{{ routes.all_products_collection_url }}\">See everything →</a></div></section>",
         "section_width": "page-width",
         "padding-block-start": 0,
         "padding-block-end": 0
@@ -84,7 +84,10 @@
               }
             }
           },
-          "block_order": ["title","shop-all"]
+          "block_order": [
+            "title",
+            "shop-all"
+          ]
         },
         "static-product-card": {
           "type": "_product-card",
@@ -139,7 +142,11 @@
               }
             }
           },
-          "block_order": ["gallery","title","price"]
+          "block_order": [
+            "gallery",
+            "title",
+            "price"
+          ]
         }
       }
     },
@@ -153,5 +160,11 @@
       }
     }
   },
-  "order": ["kynza_hero","kynza_intro","kynza_categories","kynza_products","kynza_close"]
+  "order": [
+    "kynza_hero",
+    "kynza_intro",
+    "kynza_categories",
+    "kynza_products",
+    "kynza_close"
+  ]
 }
