@@ -148,3 +148,30 @@ button,
 @media (prefers-reduced-motion: reduce) {
   .kynza-hero__product, .kynza-category-grid a strong b { transition:none !important; }
 }
+
+
+/* KYNZA beauty-first UX: image-led discovery, responsive cards, clear touch targets */
+.kynza-hero--beauty .kynza-hero__visual { padding:clamp(28px,5vw,76px); }
+.kynza-hero__image-stack { position:relative; width:min(100%,560px); }
+.kynza-hero__image-stack .kynza-hero__product { width:100%; }
+.kynza-hero__image-stack .kynza-hero__product img { display:block; width:100%; max-height:650px; aspect-ratio:4/5; object-fit:contain; background:#f2e9df; }
+.kynza-hero__stamp { position:absolute; right:-22px; bottom:76px; z-index:2; display:grid; place-content:center; width:112px; height:112px; border-radius:50%; background:#ad655a; color:#fffaf4; text-align:center; font-size:.61rem; font-weight:750; line-height:1.35; letter-spacing:.08em; transform:rotate(9deg); box-shadow:0 12px 30px rgba(40,33,29,.16); }
+.kynza-rituals { padding-top:clamp(72px,9vw,120px); }
+.kynza-ritual-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:18px; }
+.kynza-ritual-card { display:block; min-width:0; color:var(--kynza-ink); text-decoration:none; }
+.kynza-ritual-card__image { position:relative; overflow:hidden; background:#eee5dc; aspect-ratio:4/5; border-radius:5px; }
+.kynza-ritual-card__image img { display:block; width:100%; height:100%; object-fit:cover; transition:transform .45s cubic-bezier(.2,.7,.2,1); }
+.kynza-ritual-card:hover .kynza-ritual-card__image img { transform:scale(1.045); }
+.kynza-ritual-card__image>span { position:absolute; left:14px; bottom:14px; padding:8px 10px; background:rgba(250,247,243,.92); color:#3b302b; font-size:.62rem; font-weight:750; letter-spacing:.1em; }
+.kynza-ritual-card__foot { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:16px 2px 4px; border-bottom:1px solid var(--kynza-line); }
+.kynza-ritual-card__foot h3 { margin:0; font-size:clamp(1.1rem,1.5vw,1.4rem); letter-spacing:-.035em; }
+.kynza-ritual-card__foot p { margin:4px 0 14px; color:var(--kynza-muted); font-size:.88rem; line-height:1.4; }
+.kynza-ritual-card__foot>span { display:grid; place-items:center; flex:0 0 36px; width:36px; height:36px; border:1px solid var(--kynza-line); border-radius:50%; transition:background .2s,color .2s,transform .2s; }
+.kynza-ritual-card:hover .kynza-ritual-card__foot>span { background:var(--kynza-ink); color:white; transform:translate(2px,-2px); }
+.kynza-ritual-card:focus-visible { outline:3px solid var(--kynza-focus); outline-offset:5px; }
+.kynza-close--beauty { background:radial-gradient(ellipse at 88% 15%,#76534b 0%,transparent 48%),#30231f; }
+.product-card .card-gallery img,.product-card .product-media img,.product-card .card__media img { transition:transform .35s ease; }
+.product-card:hover .card-gallery img,.product-card:hover .product-media img,.product-card:hover .card__media img { transform:scale(1.035); }
+@media(max-width:1000px) { .kynza-ritual-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px 16px; } }
+@media(max-width:600px) { .kynza-hero__stamp { width:88px;height:88px;right:-8px;bottom:56px;font-size:.52rem; } .kynza-ritual-grid { gap:22px 12px; } .kynza-ritual-card__foot { align-items:flex-start; } .kynza-ritual-card__foot h3 { font-size:1.05rem; } .kynza-ritual-card__foot p { font-size:.8rem; } .kynza-ritual-card__foot>span { flex-basis:30px;width:30px;height:30px; } }
+@media(prefers-reduced-motion:reduce) { .kynza-ritual-card__image img,.kynza-ritual-card__foot>span,.product-card .card-gallery img,.product-card .product-media img,.product-card .card__media img { transition:none!important; } }
