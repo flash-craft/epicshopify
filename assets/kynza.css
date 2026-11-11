@@ -117,3 +117,34 @@ button,
 @media(max-width:900px) { .kynza-hero__copy { padding-block:72px 50px; } .kynza-hero__note { margin-top:45px; } .kynza-hero__visual { padding:32px; } .kynza-category-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
 @media(max-width:600px) { .kynza-hero h1 { font-size:clamp(3.5rem,15vw,5.8rem); } .kynza-hero__copy { padding:55px 22px 45px; } .kynza-hero__note { font-size:.57rem; } .kynza-hero__note span { padding:0 4px; } .kynza-hero__visual { min-height:0; padding:26px 22px 36px; } .kynza-hero__placeholder { min-height:300px; } .kynza-category-grid { grid-template-columns:1fr; gap:10px; } .kynza-category-grid a { min-height:180px; } .kynza-close h2 { font-size:clamp(3.4rem,13vw,5.4rem); } }
 @media(prefers-reduced-motion:reduce) { .kynza-hero__product img,.kynza-category-grid a { transform:none!important; transition:none!important; } }
+
+
+/* Conversion-focused polish — November 2026 */
+.kynza-hero__copy { padding-top: clamp(64px, 8vw, 112px); padding-bottom: clamp(64px, 8vw, 112px); }
+.kynza-hero__product { transition: transform .25s ease; }
+.kynza-hero__product:hover { transform: translateY(-3px); }
+.kynza-hero__caption { font-size: .92rem !important; }
+.kynza-category-grid a { position: relative; }
+.kynza-category-grid a strong b { transition: transform .18s ease; }
+.kynza-category-grid a:hover strong b { transform: translate(3px,-3px); }
+.product-information .button,
+.product-information button[type="submit"],
+.product-information .shopify-payment-button__button {
+  min-height: 54px;
+  border-radius: 999px;
+  font-size: .95rem;
+  letter-spacing: .01em;
+}
+.product-information .shopify-payment-button__button--unbranded { min-height:54px; }
+.product-card .price, .product-card .product-title { font-size: .94rem; }
+.product-card .price { font-weight: 650; }
+.product-information .rte a { text-underline-offset: 3px; }
+@media (max-width: 749px) {
+  .kynza-hero__copy { padding-inline: 22px; }
+  .kynza-actions { align-items: flex-start; }
+  .kynza-button { min-height: 52px; }
+  .product-information .button, .product-information button[type="submit"] { width:100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .kynza-hero__product, .kynza-category-grid a strong b { transition:none !important; }
+}
