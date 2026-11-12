@@ -280,3 +280,66 @@ button,
   .product-card, .kynza-ritual-card, .kynza-routine__card,
   .product-card img { transition: none !important; transform: none !important; }
 }
+
+
+/* KYNZA storefront UX polish — November 2026
+   Keeps the established warm-white editorial layout and adds practical usability. */
+:root {
+  --kynza-surface: #fffdf9;
+  --kynza-shadow-soft: 0 14px 36px rgba(40, 33, 29, .08);
+}
+html { scroll-padding-top: 100px; }
+body { -webkit-tap-highlight-color: transparent; }
+.product-card,
+.kynza-ritual-card,
+.kynza-routine__card {
+  -webkit-font-smoothing: antialiased;
+}
+.product-card {
+  border-radius: 5px;
+  transition: transform .28s cubic-bezier(.2,.7,.2,1), box-shadow .28s ease;
+}
+.product-card:hover { box-shadow: var(--kynza-shadow-soft); }
+.product-card :is(a,button) { touch-action: manipulation; }
+.product-card .price { color: var(--kynza-ink); }
+.product-information :is(input,select,textarea) {
+  min-height: 48px;
+  border-color: var(--kynza-line);
+  background-color: var(--kynza-surface);
+}
+.product-information :is(input,select,textarea):focus {
+  border-color: var(--kynza-accent);
+  box-shadow: 0 0 0 2px rgba(173,101,90,.13);
+}
+.product-information button[type="submit"],
+.product-information .shopify-payment-button__button,
+.cart__checkout-button,
+.cart-drawer__checkout {
+  min-height: 54px;
+  border-radius: 999px;
+}
+.cart-drawer,
+.cart-drawer__content { line-height: 1.5; }
+.kynza-link, .rte a { text-underline-offset: 4px; }
+a, button, input, select, textarea { touch-action: manipulation; }
+@media (hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference) {
+  .product-card:hover { transform: translateY(-4px) scale(1.018); }
+  .product-card .card-gallery img,
+  .product-card .product-media img,
+  .product-card .card__media img { transition: transform .4s cubic-bezier(.2,.7,.2,1); }
+  .product-card:hover .card-gallery img,
+  .product-card:hover .product-media img,
+  .product-card:hover .card__media img { transform: scale(1.045); }
+}
+@media (max-width:749px) {
+  html { scroll-padding-top: 76px; }
+  .kynza-hero__copy { padding-top: 48px; padding-bottom: 44px; }
+  .kynza-hero__visual { padding: 24px 18px 30px; }
+  .kynza-button { min-height: 50px; }
+  .product-information button[type="submit"],
+  .product-information .shopify-payment-button__button { width: 100%; }
+}
+@media (prefers-reduced-motion:reduce) {
+  html { scroll-behavior: auto; }
+  .product-card, .product-card img { transition: none !important; transform: none !important; }
+}
