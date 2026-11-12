@@ -43,9 +43,6 @@
     {%- render 'scripts' -%}
     {%- render 'theme-styles-variables' -%}
     {%- render 'color-palette' -%}
-    {{ 'kynza.css' | asset_url | stylesheet_tag }}
-    <meta name="theme-color" content="#faf7f3">
-    <meta name="color-scheme" content="light">
 
     {% if request.design_mode %}
       {%- render 'theme-editor' -%}
